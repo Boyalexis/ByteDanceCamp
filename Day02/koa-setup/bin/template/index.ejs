@@ -1,0 +1,21 @@
+const Koa = require('koa')
+<% if (router) { %>
+const router = require('koa-router')
+<% } %>
+
+const app = new Koa()
+<% if (router) { %>
+const router = new Router();
+router.get("/", (ctx) => {
+  ctc.body = "hello koa-setup-heihei";
+})
+app.use(router.routes())
+<% } %>
+
+<% if (static) { %>
+app.use(server(__dirname + "/static"));
+<% } %>
+
+app.listen(<%= port %>, () => {
+  console.log("open server localhost: <%= port %>");
+})
